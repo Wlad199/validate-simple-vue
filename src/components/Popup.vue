@@ -1,6 +1,7 @@
 <template>
   <div class="popup">
     <div class="popup__content">
+      <h1>Сonfirm data</h1>
       <div class="popup__data">
         <div>
           <span>Name:</span> <span>{{ user.name }}</span>

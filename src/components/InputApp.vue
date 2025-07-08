@@ -34,8 +34,6 @@ const change = (event: Event) => {
 }
 </script>
 
-<!--/////////////////////////////////////////////-->
-
 <style scoped lang="scss">
 .form-control {
   margin-bottom: 25px;

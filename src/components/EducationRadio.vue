@@ -62,7 +62,6 @@ const change = (e: Event) => {
     line-height: 140%;
     position: relative;
 
-    //Рисуем новые кружки
     &::before {
       content: '';
       align-self: flex-start;
@@ -83,7 +82,6 @@ const change = (e: Event) => {
       border-radius: 50%;
       background-color: #299b49;
       transition: all 0.3s ease 0s;
-      // Скрыт по умолчанию
       transform: scale(0);
     }
   }
