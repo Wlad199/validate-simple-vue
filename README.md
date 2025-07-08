@@ -1,14 +1,26 @@
-# .
+# Validate Simple Form
 
-This template should help get you started developing with Vue 3 in Vite.
 
-## Recommended IDE Setup
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+Validation of Name, Age, E-mail and other properties
 
-## Customize configuration
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+
+- Name is mandatory
+- Age form 0 to 120
+- Check correct password
+- Agree with using data
+- Show data before fake submit 
+
+
+
+
+
+<img src="./public/preview.png" width="400" />
+
+
+
+---
 
 ## Project Setup
 
