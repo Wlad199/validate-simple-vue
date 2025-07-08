@@ -22,112 +22,29 @@
       placeholder="Enter your email"
       type="text"
     />
-    <div class="form-control">
-      <h3>What's your city?</h3>
-      <label for="city">
-        <select id="city" v-model="user.city">
-          <option value="Yaroslavl">Yaroslavl</option>
-          <option value="Moscow">Moscow</option>
-          <option value="Tver">Tver</option>
-          <option value="Murmansk">Murmansk</option>
-        </select>
-      </label>
-    </div>
-    <div class="form-control education">
-      <h3>What's your Education?</h3>
-      <div>
-        <input
-          v-model="user.education"
-          type="radio"
-          name="education"
-          value="elementary"
-          id="elementary"
-        />
-        <label for="elementary"> Elementary Education </label>
-      </div>
-      <div>
-        <input
-          v-model="user.education"
-          type="radio"
-          name="education"
-          value="secondary"
-          id="secondary"
-        />
-        <label for="secondary"> Secondary Education </label>
-      </div>
-      <div>
-        <input
-          v-model="user.education"
-          type="radio"
-          name="education"
-          value="higher"
-          id="higher"
-        />
-        <label for="higher"> Higher Education </label>
-      </div>
-    </div>
-    <div class="form-control language">
-      <h3>Which languages do you know?</h3>
-      <div>
-        <input
-          v-model="user.languages"
-          type="checkbox"
-          name="language"
-          value="english"
-          id="english"
-        />
-        <label for="english"> English </label>
-      </div>
-      <div>
-        <input
-          v-model="user.languages"
-          type="checkbox"
-          name="language"
-          value="russian"
-          id="russian"
-        />
-        <label for="russian"> Russian </label>
-      </div>
-      <div>
-        <input
-          v-model="user.languages"
-          type="checkbox"
-          name="language"
-          value="german"
-          id="german"
-        />
-        <label for="german"> German </label>
-      </div>
-      <div>
-        <input
-          v-model="user.languages"
-          type="checkbox"
-          name="education"
-          value="spanish"
-          id="spanish"
-        />
-        <label for="spanish"> Spanish </label>
-      </div>
-    </div>
-    <div class="form-control">
-      <h3>Your message:</h3>
-      <textarea v-model="user.message" name="message"></textarea>
-    </div>
-    <div class="form-control data-agree">
-      <input v-model="user.agreement" id="agree" type="checkbox" />
-      <label for="agree">
-        I give my consent to the processing of my personal data
-      </label>
-      <small v-if="!user.agreement">{{ user.errors.agreement }}</small>
-    </div>
-    <button type="submit">Send request</button>
+    <CitySelect v-model="user.city" />
+    <EducationRadio v-model="user.education" />
+    <LanguageCheckbox v-model="user.languages" />
+    <Message v-model="user.message" />
+    <AgreeWithData v-model="user.agreement" :error="user.errors.agreement" />
+    <SubmitButton />
   </form>
+  <Popup v-if="showResult" :user="user" />
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
 import IUser from './types/user'
 import InputApp from '@/components/InputApp.vue'
+import CitySelect from '@/components/CitySelect.vue'
+import EducationRadio from '@/components/EducationRadio.vue'
+import LanguageCheckbox from '@/components/LanguageCheckbox.vue'
+import Message from '@/components/Message.vue'
+import AgreeWithData from '@/components/AgreeWithData.vue'
+import SubmitButton from '@/components/SubmitButton.vue'
+import Popup from '@/components/Popup.vue'
+
+const showResult = ref<boolean>(false)
 
 const user = ref<IUser>({
   name: '',
@@ -183,7 +100,8 @@ const formIsValid = () => {
 
 const submitHandler = () => {
   if (formIsValid()) {
-    console.log(user.value)
+    showResult.value = true
+    document.body.classList.add('_locked')
   }
 }
 </script>
