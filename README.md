@@ -8,7 +8,7 @@ Validation of Name, Age, E-mail and other properties
 
 - Name is mandatory
 - Age form 0 to 120
-- Check correct password
+- Check correct email
 - Agree with using data
 - Show data before fake submit 
 
